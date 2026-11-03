@@ -1,0 +1,45 @@
+AI USAGE LOG
+Student: Musagaliev Rahat
+Project: Light in the Dark
+
+1. What AI tools were used
+
+    Claude (Chat): Assisted in bootstrapping the initial project structure, generating boilerplate scripts, and drafting editor utility scripts. Consulted for refactoring mobile touch input logic, designing the touch control layout, and reviewing code logic for project defense preparation.
+
+2. What did the AI do
+
+    Claude (Chat):Provided baseline script templates for core systems (PlayerMovement, HUD, FakeFloor, Pause Menu, Hazard and so on). Helped structure the movement buttons on the left and action buttons (JUMP) on the right. 
+
+3. What I did myself
+
+    Game Design & Core Mechanics:
+
+        Conceived the core concept and rules of the cooperative platformer  (managing light and shadow mechanics).
+
+        Designed level progression, obstacle placements.
+
+    Unity Editor Work & Scene Assembly:
+
+        Assembled game scenes manually, set up tilemaps, configured physics materials, assigned sorting layers, and linked prefabs in the Unity Inspector.
+
+        Fine-tuned component properties (gravity scales, movement speed, jump heights) to ensure smooth platformer physics feel.
+
+    Code Modifications & Integration:
+
+        Customized and integrated AI-generated scripts to fit specific project requirements.
+
+        Wrote and tweaked custom serialization settings, inspector attributes, and object references directly within Unity components.
+
+    Testing, Debugging & Mobile Validation:
+
+        Tested the game locally in the Unity Editor and built APK/mobile test versions to verify touch controls, button responsiveness, and UI scaling on mobile screens.
+
+        Resolved NullReferenceExceptions, fixed broken script references in the Inspector, and adjusted touch input deadzones.
+
+4. How did I check that I understand the code
+
+    Line-by-Line Code Review: Manually walked through every custom script (PlayerController, VirtualStick, TouchButton, GameInput), tracing execution order from Awake() and Start() to Update().
+
+    Targeted Modification Tests: Tested my understanding by intentionally altering variables (such as modifying velocity vectors, tweaking jump impulses, and changing coroutine delay times) and observing the direct impact inside the Unity Editor.
+
+    Defense Preparedness: Can confidently explain the architectural role of each subsystem, how inputs flow from the touch UI down to player movement physics, and how the game state manages win/loss conditions.
