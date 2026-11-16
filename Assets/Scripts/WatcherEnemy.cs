@@ -22,6 +22,10 @@ public class WatcherEnemy : MonoBehaviour
     public float projectileSpeed = 7f;
     public LineRenderer aimLine;
 
+    [Header("Sound")]
+    public AudioClip aimSound;         // rising hum during the wind-up
+    public AudioClip shootSound;
+
     State state;
     float timer;
     Collider2D hero;
@@ -80,12 +84,14 @@ public class WatcherEnemy : MonoBehaviour
         SetState(State.Shoot);
     }
 
-    // Change the state, reset the timer, show the line only while aiming, tell the Animator
+    // Change the state, reset the timer, show the line only while aiming, tell the Animator, play the sound
     void SetState(State newState)
     {
         state = newState;
         timer = 0f;
         aimLine.enabled = newState == State.Aim;
         animator.SetInteger("State", (int)newState);
+        if (newState == State.Aim) AudioManager.Instance.PlaySfx(aimSound);
+        if (newState == State.Shoot) AudioManager.Instance.PlaySfx(shootSound);
     }
 }

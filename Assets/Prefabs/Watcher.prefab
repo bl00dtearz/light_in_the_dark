@@ -219,6 +219,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1747761360363602498, guid: d2faabff2032cfb489eb10ebe83a9c3d, type: 3}
   projectileSpeed: 7
   aimLine: {fileID: 1018775986370584956}
+  aimSound: {fileID: 8300000, guid: 774a85889612afb4ab5a6e509db84a9a, type: 3}
+  shootSound: {fileID: 8300000, guid: 681813c6b7eacf442a1ccdebab061d21, type: 3}
 --- !u!1 &5540639197430896986
 GameObject:
   m_ObjectHideFlags: 0

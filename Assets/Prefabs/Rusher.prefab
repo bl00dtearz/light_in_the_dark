@@ -313,3 +313,5 @@ MonoBehaviour:
   wallStopDistance: 0.6
   stunTime: 1.5
   returnSpeed: 2
+  windUpSound: {fileID: 8300000, guid: 797a41e8ce9efd24a83a8f369c2c29cf, type: 3}
+  crashSound: {fileID: 8300000, guid: 70a1e73ad3c242747816484fcefbdbd8, type: 3}
