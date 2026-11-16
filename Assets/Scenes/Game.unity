@@ -2078,12 +2078,13 @@ MonoBehaviour:
   levels:
   - {fileID: 11400000, guid: d050fdf62ae05eb4498a91b75a33ad5f, type: 2}
   - {fileID: 11400000, guid: 8818fdd9378793d40ab95ae30144d1c6, type: 2}
+  - {fileID: 11400000, guid: da8b1bde4e718e04a9e8db384b6e57a9, type: 2}
   player: {fileID: 1236807767}
   background: {fileID: 857715041}
   blockPrefab: {fileID: 1200114121016614239, guid: acd0e084108e3974183090d84bc62d5e, type: 3}
   orbPrefab: {fileID: 2288518728471567127, guid: 14d15a20a1b7ede4c8503addb522cea2, type: 3}
   spikesPrefab: {fileID: 3321021449241036663, guid: 78ae35bd3983afd40b3a30459a797ec6, type: 3}
-  nearSpikesPrefab: {fileID: 0}
+  nearSpikesPrefab: {fileID: 4080859237745489426, guid: 1c27f4110ba1bc0408baa9acb90e4905, type: 3}
   fakeFloorPrefab: {fileID: 5743514480264167533, guid: 96d6c34c4407e7847a9b049a3d07c1f8, type: 3}
   doorPrefab: {fileID: 5448828539297885819, guid: 1f5a476de1a9f084bad1127d81c3fbd9, type: 3}
   shadePrefab: {fileID: 2708547244517060945, guid: c455ad86276b0104391559ef8100a574, type: 3}

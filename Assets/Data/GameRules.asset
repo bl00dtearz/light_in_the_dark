@@ -18,6 +18,6 @@ MonoBehaviour:
   fakeFloorDelay: 0.3
   fakeFloorGravity: 3
   fakeFloorLifetime: 3
-  nearSpikesRange: 2.5
+  nearSpikesRange: 3
   nearSpikesFlashTime: 0.25
   nearSpikesBrightness: 2.2
