@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public float groundRadius = 0.12f;
     public LayerMask groundLayer;
 
+    // Sound
+    public AudioClip jumpSound;
+
     // Components on the same GameObject
     Rigidbody2D rb;
     Animator animator;
@@ -60,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         if (jumpAction.WasPressedThisFrame() && grounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            AudioManager.Instance.PlaySfx(jumpSound);
         }
 
         // Face the walking direction

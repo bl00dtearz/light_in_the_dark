@@ -202,6 +202,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  jumpSound: {fileID: 8300000, guid: 9143fad3c387b114a93dfe34f021bd30, type: 3}
 --- !u!1 &6476020423604677506
 GameObject:
   m_ObjectHideFlags: 0
