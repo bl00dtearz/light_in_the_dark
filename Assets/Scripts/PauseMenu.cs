@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // Pause, Resume, Restart and Menu buttons. Time.timeScale = 0 stops the game.
+// The music is softened by the AudioManager; a new scene always starts unpaused.
 public class PauseMenu : MonoBehaviour
 {
     // The full-screen pause panel (hidden while playing)
@@ -20,6 +21,7 @@ public class PauseMenu : MonoBehaviour
     {
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
+        AudioManager.Instance.SetPaused(true);
     }
 
     // Resume button
@@ -27,6 +29,7 @@ public class PauseMenu : MonoBehaviour
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+        AudioManager.Instance.SetPaused(false);
     }
 
     // Restart button: reload this level
