@@ -312,3 +312,4 @@ MonoBehaviour:
   alertTime: 0.5
   chaseSpeed: 3.5
   lostTime: 1.5
+  alertSound: {fileID: 8300000, guid: 3e8332533491da342ab7049e25d053fd, type: 3}

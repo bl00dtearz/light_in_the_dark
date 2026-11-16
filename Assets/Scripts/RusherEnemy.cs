@@ -23,6 +23,10 @@ public class RusherEnemy : MonoBehaviour
     public float stunTime = 1.5f;        // cooldown after the dash
     public float returnSpeed = 2f;
 
+    [Header("Sound")]
+    public AudioClip windUpSound;        // snort + rumble at the start of the wind-up
+    public AudioClip crashSound;         // hit at the end of the dash
+
     State state;
     float timer;
     float startX;
@@ -94,11 +98,13 @@ public class RusherEnemy : MonoBehaviour
         }
     }
 
-    // Change the state, reset the timer and tell the Animator
+    // Change the state, reset the timer, tell the Animator, play the sound
     void SetState(State newState)
     {
         state = newState;
         timer = 0f;
         animator.SetInteger("State", (int)newState);
+        if (newState == State.WindUp) AudioManager.Instance.PlaySfx(windUpSound);
+        if (newState == State.Stunned) AudioManager.Instance.PlaySfx(crashSound);
     }
 }

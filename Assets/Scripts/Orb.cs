@@ -3,6 +3,8 @@ using UnityEngine;
 // A light orb: +10 score when the hero touches it.
 public class Orb : MonoBehaviour
 {
+    public AudioClip pickupSound;
+
     // Tell the GameManager that this orb exists
     void Start()
     {
@@ -15,6 +17,7 @@ public class Orb : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameManager.Instance.AddOrb();
+            AudioManager.Instance.PlaySfx(pickupSound);
             Destroy(gameObject);
         }
     }

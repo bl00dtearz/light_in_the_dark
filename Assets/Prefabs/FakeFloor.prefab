@@ -180,3 +180,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FakeFloor
   fallDelay: 0.3
+  crackSound: {fileID: 8300000, guid: 02b724a511bd3324a91fc4adb9a0f17f, type: 3}

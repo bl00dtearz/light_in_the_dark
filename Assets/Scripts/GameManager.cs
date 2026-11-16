@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     // Seconds between death and the level restart
     public float restartDelay = 1f;
 
+    // Sounds: the hit at the moment of death, the "lose" jingle when the level restarts
+    public AudioClip deathSound;
+    public AudioClip loseSound;
+
     // Register this object as the singleton before any Start() runs
     void Awake()
     {
@@ -42,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
+        AudioManager.Instance.PlaySfx(deathSound);
         // Invoke calls RestartLevel once, restartDelay seconds from now
         Invoke(nameof(RestartLevel), restartDelay);
     }
@@ -49,6 +54,7 @@ public class GameManager : MonoBehaviour
     // Reload the current scene: everything, including the score, starts again
     void RestartLevel()
     {
+        AudioManager.Instance.PlaySfx(loseSound);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -24,6 +24,9 @@ public class ShadeEnemy : MonoBehaviour
     public float chaseSpeed = 3.5f;
     public float lostTime = 1.5f;    // cooldown: waits before going back to patrol
 
+    [Header("Sound")]
+    public AudioClip alertSound;     // growl at the start of the wind-up
+
     State state;
     float timer;
     int dir = 1;                     // 1 = looks right, -1 = looks left
@@ -83,12 +86,13 @@ public class ShadeEnemy : MonoBehaviour
         }
     }
 
-    // Change the state, reset the timer and tell the Animator
+    // Change the state, reset the timer, tell the Animator, play the wind-up sound
     void SetState(State newState)
     {
         state = newState;
         timer = 0f;
         animator.SetInteger("State", (int)newState);
+        if (newState == State.Alert) AudioManager.Instance.PlaySfx(alertSound);
     }
 
     // Step towards x along the ground. Returns true when x is reached.

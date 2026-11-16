@@ -7,6 +7,26 @@ public class MainMenu : MonoBehaviour
     // The first level of the game
     public string levelScene = "Level1";
 
+    // The Settings panel with the volume sliders (hidden at start)
+    public GameObject settingsPanel;
+
+    void Start()
+    {
+        settingsPanel.SetActive(false);
+    }
+
+    // Settings button
+    public void OpenSettings()
+    {
+        settingsPanel.SetActive(true);
+    }
+
+    // Back button inside the Settings panel
+    public void CloseSettings()
+    {
+        settingsPanel.SetActive(false);
+    }
+
     // Play button
     public void Play()
     {

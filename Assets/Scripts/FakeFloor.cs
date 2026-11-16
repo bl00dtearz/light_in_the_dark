@@ -6,6 +6,7 @@ public class FakeFloor : MonoBehaviour
 {
     // Seconds between the touch and the fall
     public float fallDelay = 0.3f;
+    public AudioClip crackSound;
 
     Rigidbody2D rb;
     bool triggered;
@@ -22,6 +23,7 @@ public class FakeFloor : MonoBehaviour
         if (!triggered && collision.gameObject.CompareTag("Player"))
         {
             triggered = true;
+            AudioManager.Instance.PlaySfx(crackSound);
             Invoke(nameof(Fall), fallDelay);
         }
     }
