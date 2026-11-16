@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6fc0915f96b33349a8b9d2d3252bb8d, type: 3}
+  m_Name: Watcher_Stats
+  m_EditorClassIdentifier: Assembly-CSharp::WatcherStats
+  visionRange: 7
+  visionAngle: 360
+  aimTime: 0.6
+  shootTime: 0.2
+  cooldownTime: 1.5
+  boltSpeed: 7
+  boltLifetime: 4

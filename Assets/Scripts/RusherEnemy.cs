@@ -8,20 +8,13 @@ public class RusherEnemy : MonoBehaviour
     // The numbers match the int parameter "State" in Rusher.controller
     enum State { Idle, WindUp, Charge, Stunned, Return }
 
+    // All balance numbers live in a data asset (Rusher_Stats or Rusher_Hard)
+    public RusherStats stats;
+
     [Header("Vision")]
     public Transform eye;
-    public int facing = -1;              // -1 = looks left, 1 = looks right
-    public float visionRange = 9f;
-    public float visionAngle = 20f;      // narrow: only sees straight ahead
+    public int facing = -1;              // -1 = looks left, 1 = looks right (set by the LevelLoader)
     public LayerMask wallLayer;
-
-    [Header("Attack")]
-    public float windUpTime = 0.7f;      // wind-up: shakes with red eyes
-    public float chargeSpeed = 10f;
-    public float maxChargeDistance = 12f;
-    public float wallStopDistance = 0.6f;
-    public float stunTime = 1.5f;        // cooldown after the dash
-    public float returnSpeed = 2f;
 
     [Header("Sound")]
     public AudioClip windUpSound;        // snort + rumble at the start of the wind-up
@@ -56,12 +49,12 @@ public class RusherEnemy : MonoBehaviour
         switch (state)
         {
             case State.Idle:
-                if (EnemyVision.CanSee(eye.position, Vector2.right * facing, hero.bounds.center, visionRange, visionAngle, wallLayer))
+                if (EnemyVision.CanSee(eye.position, Vector2.right * facing, hero.bounds.center, stats.visionRange, stats.visionAngle, wallLayer))
                     SetState(State.WindUp);
                 break;
 
             case State.WindUp:
-                if (timer >= windUpTime)
+                if (timer >= stats.windUpTime)
                 {
                     chargeStartX = transform.position.x;
                     SetState(State.Charge);
@@ -70,14 +63,14 @@ public class RusherEnemy : MonoBehaviour
 
             case State.Charge:
                 // Dash forward until a wall is right in front or the dash is long enough
-                transform.position += Vector3.right * facing * chargeSpeed * Time.deltaTime;
-                bool wallAhead = Physics2D.Raycast(eye.position, Vector2.right * facing, wallStopDistance, wallLayer);
-                bool tooFar = Mathf.Abs(transform.position.x - chargeStartX) >= maxChargeDistance;
+                transform.position += Vector3.right * facing * stats.chargeSpeed * Time.deltaTime;
+                bool wallAhead = Physics2D.Raycast(eye.position, Vector2.right * facing, stats.wallStopDistance, wallLayer);
+                bool tooFar = Mathf.Abs(transform.position.x - chargeStartX) >= stats.maxChargeDistance;
                 if (wallAhead || tooFar) SetState(State.Stunned);
                 break;
 
             case State.Stunned:
-                if (timer >= stunTime)
+                if (timer >= stats.stunTime)
                 {
                     spriteRenderer.flipX = facing > 0;   // turn around to walk back
                     SetState(State.Return);
@@ -87,7 +80,7 @@ public class RusherEnemy : MonoBehaviour
             case State.Return:
                 // Walk back to the start point, then look forward again
                 Vector3 pos = transform.position;
-                pos.x = Mathf.MoveTowards(pos.x, startX, returnSpeed * Time.deltaTime);
+                pos.x = Mathf.MoveTowards(pos.x, startX, stats.returnSpeed * Time.deltaTime);
                 transform.position = pos;
                 if (Mathf.Abs(pos.x - startX) < 0.01f)
                 {

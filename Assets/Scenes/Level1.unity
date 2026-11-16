@@ -4910,7 +4910,7 @@ MonoBehaviour:
   totalOrbs: 0
   orbsLeft: 0
   isDead: 0
-  restartDelay: 1
+  rules: {fileID: 11400000, guid: 8229366cb7f7a9b4a8102e22bc0ab3a3, type: 2}
   deathSound: {fileID: 8300000, guid: 09806a5bfea4cc843b431f0363e70e09, type: 3}
   loseSound: {fileID: 8300000, guid: 69ae7266d06a5434a87a423c659486b1, type: 3}
 --- !u!4 &1993158812

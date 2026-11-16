@@ -7,10 +7,10 @@ public class ExitDoor : MonoBehaviour
     // The scene to load when the hero enters the open door
     public string nextScene = "MainMenu";
 
-    // Sounds, and the pause that lets the win sound play before the next scene loads
+    // The pause that lets the win sound play before the next scene loads comes from GameRules
+    public GameRules rules;
     public AudioClip openSound;
     public AudioClip winSound;
-    public float winDelay = 1f;
 
     Animator animator;
     bool isOpen;
@@ -41,7 +41,7 @@ public class ExitDoor : MonoBehaviour
             won = true;
             other.gameObject.SetActive(false);
             AudioManager.Instance.PlaySfx(winSound);
-            Invoke(nameof(LoadNextScene), winDelay);
+            Invoke(nameof(LoadNextScene), rules.winDelay);
         }
     }
 

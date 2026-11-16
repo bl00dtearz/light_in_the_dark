@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     public int orbsLeft;
     public bool isDead;
 
-    // Seconds between death and the level restart
-    public float restartDelay = 1f;
+    // Orb score and restart delay come from a data asset (GameRules)
+    public GameRules rules;
 
     // Sounds: the hit at the moment of death, the "lose" jingle when the level restarts
     public AudioClip deathSound;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     // Called by an orb when the hero picks it up
     public void AddOrb()
     {
-        score += 10;
+        score += rules.orbScore;
         orbsLeft--;
     }
 
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         isDead = true;
         AudioManager.Instance.PlaySfx(deathSound);
         // Invoke calls RestartLevel once, restartDelay seconds from now
-        Invoke(nameof(RestartLevel), restartDelay);
+        Invoke(nameof(RestartLevel), rules.restartDelay);
     }
 
     // Reload the current scene: everything, including the score, starts again

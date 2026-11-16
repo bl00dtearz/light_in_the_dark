@@ -5,9 +5,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    // Movement settings, changeable in the Inspector
-    public float moveSpeed = 6f;
-    public float jumpForce = 11f;
+    // Speed and jump come from a data asset (PlayerStats)
+    public PlayerStats stats;
 
     // An empty child at the hero's feet and the layer the hero can stand on
     public Transform groundCheck;
@@ -57,12 +56,12 @@ public class PlayerMovement : MonoBehaviour
 
         // Walk: -1 (left) .. 1 (right) from A/D, the arrows or the on-screen buttons
         float moveX = moveAction.ReadValue<Vector2>().x;
-        rb.linearVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(moveX * stats.moveSpeed, rb.linearVelocity.y);
 
         // Jump only when standing on the ground
         if (jumpAction.WasPressedThisFrame() && grounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, stats.jumpForce);
             AudioManager.Instance.PlaySfx(jumpSound);
         }
 

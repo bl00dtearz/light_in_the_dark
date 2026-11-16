@@ -4,11 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
-    public float lifeTime = 4f;
     public LayerMask wallLayer;
 
-    // Called by the Watcher right after it creates the bolt
-    public void Launch(Vector2 direction, float speed)
+    // Called by the Watcher right after it creates the bolt (speed and lifetime come from WatcherStats)
+    public void Launch(Vector2 direction, float speed, float lifeTime)
     {
         GetComponent<Rigidbody2D>().linearVelocity = direction * speed;
         Destroy(gameObject, lifeTime);

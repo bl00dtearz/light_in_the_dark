@@ -300,18 +300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7215a319f8906408b092ba3b1f09d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RusherEnemy
+  stats: {fileID: 11400000, guid: 5d2ea8985aec6964ea4556000ac06d53, type: 2}
   eye: {fileID: 2244884945694433284}
   facing: -1
-  visionRange: 9
-  visionAngle: 20
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
-  windUpTime: 0.7
-  chargeSpeed: 10
-  maxChargeDistance: 12
-  wallStopDistance: 0.6
-  stunTime: 1.5
-  returnSpeed: 2
   windUpSound: {fileID: 8300000, guid: 797a41e8ce9efd24a83a8f369c2c29cf, type: 3}
   crashSound: {fileID: 8300000, guid: 70a1e73ad3c242747816484fcefbdbd8, type: 3}
