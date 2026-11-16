@@ -1,12 +1,8 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 // The exit: opens when every orb is collected, then the hero can walk in.
 public class ExitDoor : MonoBehaviour
 {
-    // The scene to load when the hero enters the open door
-    public string nextScene = "MainMenu";
-
     // The pause that lets the win sound play before the next scene loads comes from GameRules
     public GameRules rules;
     public AudioClip openSound;
@@ -33,7 +29,7 @@ public class ExitDoor : MonoBehaviour
     }
 
     // The hero stands in the doorway of an open door: he goes inside, the win sound plays,
-    // and the next scene loads a moment later
+    // and the next level loads a moment later
     void OnTriggerStay2D(Collider2D other)
     {
         if (isOpen && !won && other.CompareTag("Player") && !GameManager.Instance.isDead)
@@ -47,6 +43,6 @@ public class ExitDoor : MonoBehaviour
 
     void LoadNextScene()
     {
-        SceneManager.LoadScene(nextScene);
+        LevelLoader.Instance.LoadNextLevel();
     }
 }

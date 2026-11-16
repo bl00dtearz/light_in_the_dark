@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 // Buttons of the main menu.
 public class MainMenu : MonoBehaviour
 {
-    // The first level of the game
-    public string levelScene = "Level1";
+    // The one scene that builds every level from data
+    public string gameScene = "Game";
 
     // The Settings panel with the volume sliders (hidden at start)
     public GameObject settingsPanel;
@@ -27,11 +27,12 @@ public class MainMenu : MonoBehaviour
         settingsPanel.SetActive(false);
     }
 
-    // Play button
+    // Play button: start from Level 1
     public void Play()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(levelScene);
+        GameSession.levelIndex = 0;
+        SceneManager.LoadScene(gameScene);
     }
 
     // Quit button (works in a build; in the Editor it only prints a message)
