@@ -18,3 +18,11 @@ What I asked the AI agent (Claude Code), what it got wrong, what I changed and w
 2026-11-16  Sound slider at 0 still played button clicks in the menu: the UI group went straight to Master. Moved UI under SFX, now the Sound slider mutes clicks too.
 2026-11-16  Listened on the phone speaker: the jump and the button click got annoying after many presses — too sharp and loud. Remade both: jump square 260–720 Hz → soft triangle 220–440 Hz, about 9 dB quieter; click → short quiet sine tick, about 10 dB quieter.
 
+## Week 11 — Data and Saves (Assignment 11, done after week 12)
+
+2026-11-17  Asked the agent for a plan first. I chose: one Game scene that builds levels from LevelData assets (as the assignment says), Level 3 with one new simple trap, best time per level as the best score. Agent moved every balance number into ScriptableObjects (PlayerStats, Shade/Watcher/Rusher stats, GameRules) and turned Level1/Level2 into Level_01/Level_02 assets — checked they match: 8 blocks, 8 orbs, 5 spikes / 7 blocks, 7 orbs, 3 enemies.
+2026-11-17  Level 3: new NearSpikes flash only when the hero is close. The agent first put timed spikes right at the Shade's edge in front of a pit — jumping over them dropped you into the pit. Moved them between the two pillars. Near spikes range 2.5 → 3 units so there is time to react.
+2026-11-17  Save system: JsonUtility + save.json, missing/empty/broken file → defaults, writing through save.tmp + File.Replace. Volumes moved from PlayerPrefs into save.json, because the assignment wants settings in the save (old volumes reset to 0.8 once). Tested a broken and an empty file — the game starts with defaults.
+2026-11-17  Bugs it made: a "\n" in the level labels became a real line break inside a C# string (compile error) — fixed. The RESET PROGRESS text did not fit the button — font 52 → 44.
+2026-11-17  Checked the menu myself: the Settings buttons were too big and RESET PROGRESS almost touched the Sound slider. Asked to make them 520×130 → 440×110 and move them down (Reset y −185 → −235, Back −330 → −365). README still described the old Level1 scene — updated it: level select, 3 levels, Game scene, data assets, save.json.
+
