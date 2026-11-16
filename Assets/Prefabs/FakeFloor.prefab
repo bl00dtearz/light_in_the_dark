@@ -179,5 +179,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128a78e3857cebb4596acf2687ae9822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FakeFloor
-  fallDelay: 0.3
+  rules: {fileID: 11400000, guid: 8229366cb7f7a9b4a8102e22bc0ab3a3, type: 2}
   crackSound: {fileID: 8300000, guid: 02b724a511bd3324a91fc4adb9a0f17f, type: 3}

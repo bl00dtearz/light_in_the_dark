@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7b1a72d5b5c874ba1b386da6dc07a9, type: 3}
+  m_Name: GameRules
+  m_EditorClassIdentifier: Assembly-CSharp::GameRules
+  orbScore: 10
+  restartDelay: 1
+  winDelay: 1
+  fakeFloorDelay: 0.3
+  fakeFloorGravity: 3
+  fakeFloorLifetime: 3
+  nearSpikesRange: 3
+  nearSpikesFlashTime: 0.25
+  nearSpikesBrightness: 2.2

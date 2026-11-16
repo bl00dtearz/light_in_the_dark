@@ -8,21 +8,16 @@ public class ShadeEnemy : MonoBehaviour
     // The numbers match the int parameter "State" in Shade.controller
     enum State { Patrol, Alert, Chase, Lost }
 
-    [Header("Patrol (waypoints)")]
+    // All balance numbers live in a data asset (Shade_Stats or Shade_Hard)
+    public ShadeStats stats;
+
+    [Header("Patrol (waypoints, set by the LevelLoader)")]
     public Transform pointA;
     public Transform pointB;
-    public float patrolSpeed = 1.5f;
 
     [Header("Vision")]
     public Transform eye;
-    public float visionRange = 6f;
-    public float visionAngle = 90f;
     public LayerMask wallLayer;
-
-    [Header("Attack")]
-    public float alertTime = 0.5f;   // wind-up: eyes flash before the chase
-    public float chaseSpeed = 3.5f;
-    public float lostTime = 1.5f;    // cooldown: waits before going back to patrol
 
     [Header("Sound")]
     public AudioClip alertSound;     // growl at the start of the wind-up
@@ -52,13 +47,13 @@ public class ShadeEnemy : MonoBehaviour
         if (GameManager.Instance.isDead) return;
 
         timer += Time.deltaTime;
-        bool seesHero = EnemyVision.CanSee(eye.position, Vector2.right * dir, hero.bounds.center, visionRange, visionAngle, wallLayer);
+        bool seesHero = EnemyVision.CanSee(eye.position, Vector2.right * dir, hero.bounds.center, stats.visionRange, stats.visionAngle, wallLayer);
 
         switch (state)
         {
             case State.Patrol:
                 // Walk to the waypoint, then turn to the other one
-                if (MoveTo(target.position.x, patrolSpeed))
+                if (MoveTo(target.position.x, stats.patrolSpeed))
                     target = (target == pointA) ? pointB : pointA;
                 if (seesHero) SetState(State.Alert);
                 break;
@@ -67,21 +62,21 @@ public class ShadeEnemy : MonoBehaviour
                 // Stand still and look at the hero until the wind-up is over
                 dir = hero.bounds.center.x > transform.position.x ? 1 : -1;
                 spriteRenderer.flipX = dir < 0;
-                if (timer >= alertTime) SetState(State.Chase);
+                if (timer >= stats.alertTime) SetState(State.Chase);
                 break;
 
             case State.Chase:
                 // Run after the hero, but never leave the patrol zone (so it never falls off)
                 float minX = Mathf.Min(pointA.position.x, pointB.position.x);
                 float maxX = Mathf.Max(pointA.position.x, pointB.position.x);
-                MoveTo(Mathf.Clamp(hero.bounds.center.x, minX, maxX), chaseSpeed);
+                MoveTo(Mathf.Clamp(hero.bounds.center.x, minX, maxX), stats.chaseSpeed);
                 if (!seesHero) SetState(State.Lost);
                 break;
 
             case State.Lost:
                 // Look around; chase again if the hero shows up, else go back to patrol
                 if (seesHero) SetState(State.Chase);
-                else if (timer >= lostTime) SetState(State.Patrol);
+                else if (timer >= stats.lostTime) SetState(State.Patrol);
                 break;
         }
     }

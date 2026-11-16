@@ -176,9 +176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExitDoor
   nextScene: MainMenu
+  rules: {fileID: 11400000, guid: 8229366cb7f7a9b4a8102e22bc0ab3a3, type: 2}
   openSound: {fileID: 8300000, guid: bb454f71d53c14948ab540ee36553f72, type: 3}
   winSound: {fileID: 8300000, guid: 86a2d0a190d66444292ba5522778817b, type: 3}
-  winDelay: 1
 --- !u!1 &7551552646514095294
 GameObject:
   m_ObjectHideFlags: 0

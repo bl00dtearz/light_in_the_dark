@@ -4,8 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class FakeFloor : MonoBehaviour
 {
-    // Seconds between the touch and the fall
-    public float fallDelay = 0.3f;
+    // Delay, gravity and lifetime come from a data asset (GameRules)
+    public GameRules rules;
     public AudioClip crackSound;
 
     Rigidbody2D rb;
@@ -24,7 +24,7 @@ public class FakeFloor : MonoBehaviour
         {
             triggered = true;
             AudioManager.Instance.PlaySfx(crackSound);
-            Invoke(nameof(Fall), fallDelay);
+            Invoke(nameof(Fall), rules.fakeFloorDelay);
         }
     }
 
@@ -32,7 +32,7 @@ public class FakeFloor : MonoBehaviour
     void Fall()
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
-        rb.gravityScale = 3f;
-        Destroy(gameObject, 3f);
+        rb.gravityScale = rules.fakeFloorGravity;
+        Destroy(gameObject, rules.fakeFloorLifetime);
     }
 }

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a5fc52bed4349419ffcbb6d71dbabd, type: 3}
+  m_Name: Level_02
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelName: Level 2
+  playerStart: {x: 1, y: 0}
+  doorPosition: {x: 61, y: 0}
+  backgroundCenter: {x: 31, y: 4}
+  backgroundSize: {x: 70, y: 20}
+  blocks:
+  - center: {x: -2.5, y: 4}
+    size: {x: 1, y: 16}
+  - center: {x: 5.5, y: -2}
+    size: {x: 17, y: 4}
+  - center: {x: 23, y: 0.75}
+    size: {x: 1, y: 1.5}
+  - center: {x: 24, y: -2}
+    size: {x: 14, y: 4}
+  - center: {x: 48, y: 3.7}
+    size: {x: 20, y: 1}
+  - center: {x: 49, y: -2}
+    size: {x: 30, y: 4}
+  - center: {x: 64.5, y: 4}
+    size: {x: 1, y: 16}
+  orbs:
+  - {x: 4, y: 0.6}
+  - {x: 9, y: 2.4}
+  - {x: 20, y: 0.6}
+  - {x: 26, y: 2.2}
+  - {x: 32.5, y: 1.8}
+  - {x: 45, y: 0.6}
+  - {x: 52, y: 2.2}
+  spikes: []
+  nearSpikes: []
+  fakeFloors:
+  - {x: 31.5, y: -0.5}
+  - {x: 32.5, y: -0.5}
+  - {x: 33.5, y: -0.5}
+  shades:
+  - position: {x: 12, y: 0}
+    leftX: 5
+    rightX: 12.5
+    stats: {fileID: 11400000, guid: 39ca7eab2fd728c45b138d85e438ebbb, type: 2}
+  watchers:
+  - {x: 28.5, y: 3.5}
+  watcherStats: {fileID: 11400000, guid: 843d9dd9c1f61f74989349fa216474f7, type: 2}
+  rushers:
+  - position: {x: 56, y: 0}
+    facing: -1
+    stats: {fileID: 11400000, guid: 5d2ea8985aec6964ea4556000ac06d53, type: 2}

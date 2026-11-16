@@ -207,17 +207,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c6919d72a341e4883bf2727df4f222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WatcherEnemy
+  stats: {fileID: 11400000, guid: 843d9dd9c1f61f74989349fa216474f7, type: 2}
   eye: {fileID: 8997626147897035801}
-  visionRange: 7
-  visionAngle: 360
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
-  aimTime: 0.6
-  shootTime: 0.2
-  cooldownTime: 1.5
   projectilePrefab: {fileID: 1747761360363602498, guid: d2faabff2032cfb489eb10ebe83a9c3d, type: 3}
-  projectileSpeed: 7
   aimLine: {fileID: 1018775986370584956}
   aimSound: {fileID: 8300000, guid: 774a85889612afb4ab5a6e509db84a9a, type: 3}
   shootSound: {fileID: 8300000, guid: 681813c6b7eacf442a1ccdebab061d21, type: 3}

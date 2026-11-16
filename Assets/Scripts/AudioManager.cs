@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // One sound manager for the whole game: music with a crossfade, sound effects, UI clicks,
-// the pause sound and the saved volumes. Every scene has a copy; the first one survives
+// the pause sound and the volumes (stored in save.json by the SaveManager). Every scene has a copy; the first one survives
 // scene loads, later copies destroy themselves.
 public class AudioManager : MonoBehaviour
 {
@@ -27,7 +27,6 @@ public class AudioManager : MonoBehaviour
     public float crossfadeTime = 1f;
     public float minPitch = 0.92f;      // random pitch so repeated sounds are not robotic
     public float maxPitch = 1.08f;
-    public float defaultVolume = 0.8f;  // slider value before the player changes it
     public AudioClip clickSound;
 
     AudioSource currentMusic;
@@ -51,6 +50,12 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         mixer.updateMode = AudioMixerUpdateMode.UnscaledTime;
+        ApplyVolumes();
+    }
+
+    // Send both saved volumes to the mixer (at launch and after Reset progress)
+    public void ApplyVolumes()
+    {
         SetVolume("MusicVol", GetVolume("MusicVol"));
         SetVolume("SFXVol", GetVolume("SFXVol"));
     }
@@ -119,22 +124,20 @@ public class AudioManager : MonoBehaviour
 
     // ---------- volume (0..1 slider value <-> decibels) ----------
 
-    // The saved slider value, or the default one on the first launch
+    // The slider value from the save (SaveData has the defaults for the first launch)
     public float GetVolume(string param)
     {
-        return PlayerPrefs.GetFloat(param, defaultVolume);
+        SaveData data = SaveManager.Instance.Data;
+        return param == "MusicVol" ? data.musicVolume : data.sfxVolume;
     }
 
-    // Slider 0..1 -> decibels with Log10 (1 = 0 dB, 0.5 = -6 dB, 0.0001 = -80 dB), then save it
+    // Slider 0..1 -> decibels with Log10 (1 = 0 dB, 0.5 = -6 dB, 0.0001 = -80 dB).
+    // The value goes into SaveData; the file is written when Settings close or the app pauses.
     public void SetVolume(string param, float value)
     {
         mixer.SetFloat(param, Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20f);
-        PlayerPrefs.SetFloat(param, value);
-    }
-
-    // Write PlayerPrefs to disk when the app goes to the background (on a phone it may be closed there)
-    void OnApplicationPause(bool paused)
-    {
-        if (paused) PlayerPrefs.Save();
+        SaveData data = SaveManager.Instance.Data;
+        if (param == "MusicVol") data.musicVolume = value;
+        else data.sfxVolume = value;
     }
 }

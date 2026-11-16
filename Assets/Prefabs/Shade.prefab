@@ -300,16 +300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e7140fb65691f47a1648ebcb3550bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShadeEnemy
+  stats: {fileID: 11400000, guid: 39ca7eab2fd728c45b138d85e438ebbb, type: 2}
   pointA: {fileID: 0}
   pointB: {fileID: 0}
-  patrolSpeed: 1.5
   eye: {fileID: 6872846330981770262}
-  visionRange: 6
-  visionAngle: 90
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
-  alertTime: 0.5
-  chaseSpeed: 3.5
-  lostTime: 1.5
   alertSound: {fileID: 8300000, guid: 3e8332533491da342ab7049e25d053fd, type: 3}

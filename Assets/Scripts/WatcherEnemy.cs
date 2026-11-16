@@ -8,18 +8,15 @@ public class WatcherEnemy : MonoBehaviour
     // The numbers match the int parameter "State" in Watcher.controller
     enum State { Sleep, Aim, Shoot, Cooldown }
 
+    // All balance numbers live in a data asset (Watcher_Stats)
+    public WatcherStats stats;
+
     [Header("Vision")]
     public Transform eye;
-    public float visionRange = 7f;
-    public float visionAngle = 360f;   // sees in every direction
     public LayerMask wallLayer;
 
     [Header("Attack")]
-    public float aimTime = 0.6f;       // wind-up: the red aim line is visible
-    public float shootTime = 0.2f;     // how long the shoot pose is shown
-    public float cooldownTime = 1.5f;
     public Projectile projectilePrefab;
-    public float projectileSpeed = 7f;
     public LineRenderer aimLine;
 
     [Header("Sound")]
@@ -49,7 +46,7 @@ public class WatcherEnemy : MonoBehaviour
         }
 
         timer += Time.deltaTime;
-        bool seesHero = EnemyVision.CanSee(eye.position, Vector2.right, hero.bounds.center, visionRange, visionAngle, wallLayer);
+        bool seesHero = EnemyVision.CanSee(eye.position, Vector2.right, hero.bounds.center, stats.visionRange, stats.visionAngle, wallLayer);
 
         switch (state)
         {
@@ -62,15 +59,15 @@ public class WatcherEnemy : MonoBehaviour
                 aimLine.SetPosition(0, eye.position);
                 aimLine.SetPosition(1, hero.bounds.center);
                 if (!seesHero) SetState(State.Sleep);
-                else if (timer >= aimTime) Shoot();
+                else if (timer >= stats.aimTime) Shoot();
                 break;
 
             case State.Shoot:
-                if (timer >= shootTime) SetState(State.Cooldown);
+                if (timer >= stats.shootTime) SetState(State.Cooldown);
                 break;
 
             case State.Cooldown:
-                if (timer >= cooldownTime) SetState(seesHero ? State.Aim : State.Sleep);
+                if (timer >= stats.cooldownTime) SetState(seesHero ? State.Aim : State.Sleep);
                 break;
         }
     }
@@ -80,7 +77,7 @@ public class WatcherEnemy : MonoBehaviour
     {
         Vector2 direction = ((Vector2)hero.bounds.center - (Vector2)eye.position).normalized;
         Projectile bolt = Instantiate(projectilePrefab, eye.position, Quaternion.identity);
-        bolt.Launch(direction, projectileSpeed);
+        bolt.Launch(direction, stats.boltSpeed, stats.boltLifetime);
         SetState(State.Shoot);
     }
 

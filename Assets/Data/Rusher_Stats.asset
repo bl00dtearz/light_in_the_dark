@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd27572c3f8a42543b0e1ba1d10d0e86, type: 3}
+  m_Name: Rusher_Stats
+  m_EditorClassIdentifier: Assembly-CSharp::RusherStats
+  visionRange: 9
+  visionAngle: 20
+  windUpTime: 0.7
+  chargeSpeed: 10
+  maxChargeDistance: 12
+  wallStopDistance: 0.6
+  stunTime: 1.5
+  returnSpeed: 2

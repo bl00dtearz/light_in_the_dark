@@ -10,11 +10,26 @@ Traps flash for a split second - remember them and get through.
 - Design document: [Docs/GDD.pdf](Docs/GDD.pdf)
 
 ## How to play
-Collect all 8 light orbs, then walk into the open door. One touch of a trap ends the run.
+Pick a level in PLAY. Collect all light orbs of the level, then walk into the open door.
+One touch of a trap or an enemy ends the run. The next level unlocks when you finish the previous one.
 Phone: left/right buttons bottom-left, JUMP bottom-right, pause top-right. Editor: A/D + Space.
 
+- Level 1: flashing spikes, a fake floor, pits.
+- Level 2: three enemies — Shade (patrols and chases), Watcher (aims and shoots), Rusher (dashes).
+- Level 3: near spikes that flash only when you come close, two Watchers, a faster Shade and Rusher.
+
 ## Scenes
-`Assets/Scenes/MainMenu` (start here) and `Assets/Scenes/Level1`.
+`Assets/Scenes/MainMenu` (start here: level select, settings, reset progress) and `Assets/Scenes/Game`.
+The Game scene is the same for every level: `LevelLoader` builds the chosen level from its data asset.
+
+## Data and saves
+- **Balance data** (ScriptableObjects in `Assets/Data`): `PlayerStats`, `Shade_Stats` / `Shade_Hard`,
+  `Watcher_Stats`, `Rusher_Stats` / `Rusher_Hard`, `GameRules` (orb score, delays, traps). Scripts have no balance numbers.
+- **Levels** (`Assets/Data/Level_01..03`, `LevelData`): blocks, orbs, traps, enemies, hero start and door.
+- **Save file:** `save.json` in `Application.persistentDataPath` — unlocked levels, best time per level, music and sound volume.
+  A missing or broken file falls back to defaults. The game saves after a level, when Settings close
+  and when the app goes to the background. Settings → Reset progress deletes it after a confirm.
+
 ## Sounds and music
 All sounds and both music loops were synthesized by code for this project (own work, made with the help of an AI agent; no third-party audio). License: same as the project.
 
