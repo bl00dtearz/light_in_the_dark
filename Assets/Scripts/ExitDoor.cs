@@ -37,6 +37,8 @@ public class ExitDoor : MonoBehaviour
             won = true;
             other.gameObject.SetActive(false);
             AudioManager.Instance.PlaySfx(winSound);
+            // Save moment: the level is done (opens the next one, keeps the best time)
+            SaveManager.Instance.LevelCompleted(GameSession.levelIndex + 1, Time.timeSinceLevelLoad);
             Invoke(nameof(LoadNextScene), rules.winDelay);
         }
     }

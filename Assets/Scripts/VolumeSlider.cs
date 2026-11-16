@@ -8,7 +8,7 @@ public class VolumeSlider : MonoBehaviour
     // The exposed mixer parameter: "MusicVol" or "SFXVol"
     public string param = "MusicVol";
 
-    // Show the saved value, then send every change to the mixer (the AudioManager also saves it)
+    // Show the saved value, then send every change to the mixer (the value goes into SaveData)
     void Start()
     {
         Slider slider = GetComponent<Slider>();

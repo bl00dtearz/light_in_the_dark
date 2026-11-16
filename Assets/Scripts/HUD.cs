@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Shows the heart (one life) and the score on the screen.
+// Shows the heart (one life), the level, the orbs, the score and the time on the screen.
 public class HUD : MonoBehaviour
 {
     // UI objects, set in the Inspector
@@ -16,7 +16,8 @@ public class HUD : MonoBehaviour
     {
         GameManager gm = GameManager.Instance;
         int collected = gm.totalOrbs - gm.orbsLeft;
-        scoreText.text = "SCORE " + gm.score + "    ORBS " + collected + "/" + gm.totalOrbs;
+        scoreText.text = LevelLoader.Instance.Current.levelName.ToUpper() + "   ORBS " + collected + "/" + gm.totalOrbs
+                       + "   SCORE " + gm.score + "   " + GameSession.FormatTime(Time.timeSinceLevelLoad);
         heartImage.sprite = gm.isDead ? heartEmpty : heartFull;
     }
 }

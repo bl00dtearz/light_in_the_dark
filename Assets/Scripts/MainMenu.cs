@@ -21,10 +21,11 @@ public class MainMenu : MonoBehaviour
         settingsPanel.SetActive(true);
     }
 
-    // Back button inside the Settings panel
+    // Back button inside the Settings panel. Save moment: the volumes go to save.json.
     public void CloseSettings()
     {
         settingsPanel.SetActive(false);
+        SaveManager.Instance.Save();
     }
 
     // Play button: start from Level 1
