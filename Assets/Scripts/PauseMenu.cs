@@ -9,11 +9,15 @@ public class PauseMenu : MonoBehaviour
     public GameObject pausePanel;
     public string menuScene = "MainMenu";
 
+    // Juice reads this: a hit stop must not end a pause
+    public static bool IsPaused;
+
     // Start every level unpaused
     void Start()
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+        IsPaused = false;
     }
 
     // Pause button (top-right)
@@ -21,6 +25,7 @@ public class PauseMenu : MonoBehaviour
     {
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
+        IsPaused = true;
         AudioManager.Instance.SetPaused(true);
     }
 
@@ -29,6 +34,7 @@ public class PauseMenu : MonoBehaviour
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+        IsPaused = false;
         AudioManager.Instance.SetPaused(false);
     }
 

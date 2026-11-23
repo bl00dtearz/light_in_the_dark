@@ -30,6 +30,15 @@ The Game scene is the same for every level: `LevelLoader` builds the chosen leve
   A missing or broken file falls back to defaults. The game saves after a level, when Settings close
   and when the app goes to the background. Settings → Reset progress deletes it after a confirm.
 
+## Effects (game feel)
+- **Particles** (`Assets/Prefabs/FX`, short bursts that destroy themselves): orb pickup, landing dust, death,
+  fake floor crumbs, Rusher hitting a wall, door light (open and walk in).
+- **Shader Graph** `Assets/Shaders/SpriteFlashDissolve`: white hit flash (`_FlashAmount`) and a noise dissolve
+  (`_Dissolve`). The hero flashes and burns away on death, the Rusher flashes when it hits a wall.
+- **Post-processing** (`Assets/Settings/GamePostProfile`): Bloom, Color Adjustments, Vignette.
+- **Camera shake** on death, Rusher crash and falling floor; **hit stop** (0.06 s) on death.
+- Pause → **EFFECTS: ON/OFF** turns all effects off (for weak phones and the before/after video). FPS is shown top-left.
+
 ## Sounds and music
 All sounds and both music loops were synthesized by code for this project (own work, made with the help of an AI agent; no third-party audio). License: same as the project.
 

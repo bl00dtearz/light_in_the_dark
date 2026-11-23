@@ -181,3 +181,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FakeFloor
   rules: {fileID: 11400000, guid: 8229366cb7f7a9b4a8102e22bc0ab3a3, type: 2}
   crackSound: {fileID: 8300000, guid: 02b724a511bd3324a91fc4adb9a0f17f, type: 3}
+  fallFx: {fileID: 2012603047319171973, guid: 56172a01cd47af1489df3a44ab35d5ff, type: 3}
+  fallShake: 0.05

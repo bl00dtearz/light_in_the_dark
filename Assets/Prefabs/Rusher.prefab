@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 1107017264657809978}
   - component: {fileID: 7903839906396547123}
   - component: {fileID: 6211849226376992155}
+  - component: {fileID: 5103041165747444347}
   m_Layer: 0
   m_Name: Rusher
   m_TagString: Untagged
@@ -148,7 +149,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e03a89b294a33d045a15ea0b1a113b12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -308,3 +309,19 @@ MonoBehaviour:
     m_Bits: 64
   windUpSound: {fileID: 8300000, guid: 797a41e8ce9efd24a83a8f369c2c29cf, type: 3}
   crashSound: {fileID: 8300000, guid: 70a1e73ad3c242747816484fcefbdbd8, type: 3}
+  crashFx: {fileID: 7205740050641811422, guid: f591648ce32b137438069a9d6cacd2c9, type: 3}
+  crashShake: 0.1
+--- !u!114 &5103041165747444347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065354328373150543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a18d56c98a0694cac97fe8664aa6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteFx
+  flashTime: 0.08
+  dissolveTime: 0.6
