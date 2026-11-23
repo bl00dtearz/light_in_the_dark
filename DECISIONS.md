@@ -27,3 +27,10 @@ What I asked the AI agent (Claude Code), what it got wrong, what I changed and w
 2026-11-17  Bugs it made: a "\n" in the level labels became a real line break inside a C# string (compile error) — fixed. The RESET PROGRESS text did not fit the button — font 52 → 44.
 2026-11-17  Checked the menu myself: the Settings buttons were too big and RESET PROGRESS almost touched the Sound slider. Asked to make them 520×130 → 440×110 and move them down (Reset y −185 → −235, Back −330 → −365). README still described the old Level1 scene — updated it: level select, 3 levels, Game scene, data assets, save.json.
 
+## Week 13 — Juice Pass (Assignment 13)
+
+2026-11-23  Asked the agent for a plan first: particles on 6 events, one Shader Graph, URP Volume, shake + hit stop, FPS counter. Rule: as little and as simple code as possible — one Juice script, effects are called like AudioManager.PlaySfx.
+2026-11-23  CameraFollow sets the camera position every frame, so a shake on the camera would be erased. Made a CameraRig: the follow moves the rig, the shake moves only the camera inside it.
+2026-11-23  The agent's first particles were 0.06–0.16 units — almost invisible in the dark. Made them about 2.5× bigger. The FPS text overlapped the score plate — moved under the heart.
+2026-11-23  Hit stop uses WaitForSecondsRealtime and resets timeScale in OnDisable; it also checks PauseMenu.IsPaused, so pressing pause during the freeze does not unpause the game.
+
