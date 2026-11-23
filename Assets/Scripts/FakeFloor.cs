@@ -8,6 +8,10 @@ public class FakeFloor : MonoBehaviour
     public GameRules rules;
     public AudioClip crackSound;
 
+    // Stone crumbs and a small shake when the block falls
+    public ParticleSystem fallFx;
+    public float fallShake = 0.05f;
+
     Rigidbody2D rb;
     bool triggered;
 
@@ -32,6 +36,8 @@ public class FakeFloor : MonoBehaviour
     void Fall()
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
+        Juice.Instance.Spawn(fallFx, transform.position);
+        Juice.Instance.Shake(0.15f, fallShake);
         rb.gravityScale = rules.fakeFloorGravity;
         Destroy(gameObject, rules.fakeFloorLifetime);
     }

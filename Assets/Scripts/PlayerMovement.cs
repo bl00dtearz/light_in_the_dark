@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     // Sound
     public AudioClip jumpSound;
 
+    // Dust under the feet when the hero lands
+    public ParticleSystem landFx;
+
     // Components on the same GameObject
     Rigidbody2D rb;
     Animator animator;
@@ -26,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     InputAction jumpAction;
 
     bool grounded;
+    bool wasGrounded = true;
 
     // Find the components and the input actions once
     void Awake()
@@ -53,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Is there ground under the feet?
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+        if (grounded && !wasGrounded) Juice.Instance.Spawn(landFx, groundCheck.position);
+        wasGrounded = grounded;
 
         // Walk: -1 (left) .. 1 (right) from A/D, the arrows or the on-screen buttons
         float moveX = moveAction.ReadValue<Vector2>().x;

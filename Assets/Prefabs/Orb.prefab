@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Orb
   pickupSound: {fileID: 8300000, guid: 6fda6fe46ecf8db44beb321c9c92c341, type: 3}
+  pickupFx: {fileID: 265386726871576027, guid: 49ae1abd317a05d4ca2f38f64c044352, type: 3}
 --- !u!1 &3526864719705400464
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
     public AudioClip deathSound;
     public AudioClip loseSound;
 
+    // Effects at the moment of death: a burst of light, white flash + dissolve on the hero, shake and hit stop
+    public ParticleSystem deathFx;
+    public SpriteFx hero;
+    public float deathShake = 0.2f;
+    public float hitStopTime = 0.06f;
+
     // Register this object as the singleton before any Start() runs
     void Awake()
     {
@@ -47,6 +53,11 @@ public class GameManager : MonoBehaviour
         if (isDead) return;
         isDead = true;
         AudioManager.Instance.PlaySfx(deathSound);
+        Juice.Instance.Spawn(deathFx, hero.transform.position);
+        Juice.Instance.Shake(0.25f, deathShake);
+        Juice.Instance.Freeze(hitStopTime);
+        hero.Flash();
+        hero.Dissolve();
         // Invoke calls RestartLevel once, restartDelay seconds from now
         Invoke(nameof(RestartLevel), rules.restartDelay);
     }

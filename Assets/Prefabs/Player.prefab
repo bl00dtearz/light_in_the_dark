@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2034669203385415082}
   - component: {fileID: 3236319876659327292}
   - component: {fileID: 815764931247932039}
+  - component: {fileID: 9070897423813491934}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -64,7 +65,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e03a89b294a33d045a15ea0b1a113b12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -202,6 +203,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpSound: {fileID: 8300000, guid: 9143fad3c387b114a93dfe34f021bd30, type: 3}
+  landFx: {fileID: 5861806282922793007, guid: 4b1b9cf91d554794eac0e2bbd5110f2e, type: 3}
+--- !u!114 &9070897423813491934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351351193869840102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a18d56c98a0694cac97fe8664aa6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteFx
+  flashTime: 0.08
+  dissolveTime: 0.8
 --- !u!1 &6476020423604677506
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,10 @@ public class RusherEnemy : MonoBehaviour
     public AudioClip windUpSound;        // snort + rumble at the start of the wind-up
     public AudioClip crashSound;         // hit at the end of the dash
 
+    [Header("Effects")]
+    public ParticleSystem crashFx;       // sparks and stones from the wall
+    public float crashShake = 0.1f;
+
     State state;
     float timer;
     float startX;
@@ -27,6 +31,7 @@ public class RusherEnemy : MonoBehaviour
     Collider2D hero;
     Animator animator;
     SpriteRenderer spriteRenderer;
+    SpriteFx spriteFx;
 
     // Remember the start point and find the hero once
     void Start()
@@ -34,6 +39,7 @@ public class RusherEnemy : MonoBehaviour
         hero = GameObject.FindWithTag("Player").GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteFx = GetComponent<SpriteFx>();
         startX = transform.position.x;
         spriteRenderer.flipX = facing < 0;
         SetState(State.Idle);
@@ -98,6 +104,12 @@ public class RusherEnemy : MonoBehaviour
         timer = 0f;
         animator.SetInteger("State", (int)newState);
         if (newState == State.WindUp) AudioManager.Instance.PlaySfx(windUpSound);
-        if (newState == State.Stunned) AudioManager.Instance.PlaySfx(crashSound);
+        if (newState == State.Stunned)
+        {
+            AudioManager.Instance.PlaySfx(crashSound);
+            Juice.Instance.Spawn(crashFx, eye.position);
+            Juice.Instance.Shake(0.2f, crashShake);
+            spriteFx.Flash();
+        }
     }
 }

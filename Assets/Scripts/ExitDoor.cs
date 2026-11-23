@@ -7,6 +7,7 @@ public class ExitDoor : MonoBehaviour
     public GameRules rules;
     public AudioClip openSound;
     public AudioClip winSound;
+    public ParticleSystem lightFx;      // burst of light when the door opens and when the hero walks in
 
     Animator animator;
     bool isOpen;
@@ -25,6 +26,7 @@ public class ExitDoor : MonoBehaviour
             isOpen = true;
             animator.SetBool("Open", true);
             AudioManager.Instance.PlaySfx(openSound);
+            Juice.Instance.Spawn(lightFx, transform.position);
         }
     }
 
@@ -37,6 +39,7 @@ public class ExitDoor : MonoBehaviour
             won = true;
             other.gameObject.SetActive(false);
             AudioManager.Instance.PlaySfx(winSound);
+            Juice.Instance.Spawn(lightFx, transform.position);
             // Save moment: the level is done (opens the next one, keeps the best time)
             SaveManager.Instance.LevelCompleted(GameSession.levelIndex + 1, Time.timeSinceLevelLoad);
             Invoke(nameof(LoadNextScene), rules.winDelay);

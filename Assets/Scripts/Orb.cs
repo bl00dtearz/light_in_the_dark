@@ -4,6 +4,7 @@ using UnityEngine;
 public class Orb : MonoBehaviour
 {
     public AudioClip pickupSound;
+    public ParticleSystem pickupFx;
 
     // Tell the GameManager that this orb exists
     void Start()
@@ -18,6 +19,7 @@ public class Orb : MonoBehaviour
         {
             GameManager.Instance.AddOrb();
             AudioManager.Instance.PlaySfx(pickupSound);
+            Juice.Instance.Spawn(pickupFx, transform.position);
             Destroy(gameObject);
         }
     }
