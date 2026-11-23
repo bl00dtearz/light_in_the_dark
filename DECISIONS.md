@@ -17,6 +17,7 @@ What I asked the AI agent (Claude Code), what it got wrong, what I changed and w
 2026-11-16  No sound at all in the game. The agent tested in batch mode, where Unity has no audio output, so it missed that no scene had an AudioListener (missing since week 9). I found it by playing, added Audio Listener to Main Camera in all 3 scenes.
 2026-11-16  Sound slider at 0 still played button clicks in the menu: the UI group went straight to Master. Moved UI under SFX, now the Sound slider mutes clicks too.
 2026-11-16  Listened on the phone speaker: the jump and the button click got annoying after many presses — too sharp and loud. Remade both: jump square 260–720 Hz → soft triangle 220–440 Hz, about 9 dB quieter; click → short quiet sine tick, about 10 dB quieter.
+2026-11-23  Effects were much louder than the music. Changed it without code: AudioManager prefab — SFX source volume 1 → 0.4 (about −8 dB), UI source 1 → 0.5. Not the SFX fader in the mixer: the Sound slider sets SFXVol from the save on every launch, so a fader change would be overwritten.
 
 ## Week 11 — Data and Saves (Assignment 11, done after week 12)
 
